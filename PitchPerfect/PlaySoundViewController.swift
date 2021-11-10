@@ -30,17 +30,19 @@ class PlaySoundViewController: UIViewController {
         case slow = 0, fast, chipmunk, vader, echo, reverb
     }
     
+    //MARK: function to enable all buttons after UI is ready.
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAudio()
-        // Do any additional setup after loading the view.
     }
     
+    //MARK: function to disable all buttons before UI is ready.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI(.notPlaying)
     }
     
+    //MARK: function to execute each button by its unique tag id.
     @IBAction func playSoundForButton(_ sender: UIButton){
         print("play sound button pressed!")
         switch(ButtonType(rawValue: sender.tag)!){
@@ -59,20 +61,12 @@ class PlaySoundViewController: UIViewController {
         }
         configureUI(.playing)
     }
+    
+    //MARK: function to stop playing sound.
     @IBAction func stopButton(_ sender: AnyObject){
         print("Audio stopped!")
         stopAudio()
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
